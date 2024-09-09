@@ -1,33 +1,112 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import "./App.css";
+import Card from "./components/card/Card";
+import Cart from "./components/cart/Cart";
+import { getData } from "./db/db";
 
-const App: React.FC = () => {
-  const [user, setUser] = useState<{
-    first_name: string;
-    username?: string;
-  } | null>(null);
+const foods = getData();
+
+interface TelegramMainButton {
+  text: string;
+  show: () => void;
+  hide: () => void;
+  isVisible: boolean;
+  setText: (text: string) => void;
+  onClick: (callback: () => void) => void;
+}
+
+interface TelegramWebApp {
+  ready: () => void;
+  close: () => void;
+  sendData: (data: string) => void;
+  onEvent: (eventType: string, callback: () => void) => void;
+  offEvent: (eventType: string, callback: () => void) => void;
+  expand: () => void;
+  themeParams: Record<string, string>;
+  user: { id: number; first_name: string; last_name: string };
+  MainButton: TelegramMainButton;
+}
+
+// Extending the global Window interface to include Telegram
+declare global {
+  interface Window {
+    Telegram?: {
+      WebApp: TelegramWebApp;
+    };
+  }
+}
+
+const tele = window.Telegram?.WebApp;
+
+interface Food {
+  title: string;
+  image: string; // Changed to lowercase 'i' to follow standard naming conventions
+  price: number;
+  id: number;
+}
+
+interface CartItem extends Food {
+  quantity: number;
+}
+
+function App() {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.ready();
-
-      // Получаем данные о пользователе
-      const user = window.Telegram.WebApp.user;
-      setUser(user);
+    if (tele) {
+      tele.ready();
     }
-  }, []);
+  }, [tele]);
 
-  const sendDataToBot = () => {
-    // Отправляем данные в бота
-    window.Telegram?.WebApp.sendData("Данные, отправленные из Mini App!");
+  const onAdd = (food: Food) => {
+    const exist = cartItems.find((x) => x.id === food.id);
+    if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === food.id ? { ...exist, quantity: exist.quantity + 1 } : x
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...food, quantity: 1 }]);
+    }
+  };
+
+  const onRemove = (food: Food) => {
+    const exist = cartItems.find((x) => x.id === food.id);
+    if (exist && exist.quantity === 1) {
+      setCartItems(cartItems.filter((x) => x.id !== food.id));
+    } else if (exist) {
+      setCartItems(
+        cartItems.map((x) =>
+          x.id === food.id ? { ...exist, quantity: exist.quantity - 1 } : x
+        )
+      );
+    }
+  };
+
+  const onCheckout = () => {
+    if (tele) {
+      tele.MainButton.setText("Pay :)"); // Use setText() method to change button text
+      tele.MainButton.show();
+    }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Привет, {user?.first_name}!</h1>
-      <h2>Твое имя пользователя: {user?.username}</h2>
-      <button onClick={sendDataToBot}>Отправить данные боту</button>
-    </div>
+    <>
+      <h1 className="heading">Order Food</h1>
+      <Cart cartItems={cartItems} onCheckout={onCheckout} />
+      <div className="cards__container">
+        {foods.map((food) => (
+          <Card
+            food={{ ...food, image: food.Image }}
+            key={food.id}
+            onAdd={onAdd}
+            onRemove={onRemove}
+          />
+        ))}
+      </div>
+    </>
   );
-};
+}
 
 export default App;
