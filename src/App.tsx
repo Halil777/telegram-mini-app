@@ -27,7 +27,6 @@ interface TelegramWebApp {
   MainButton: TelegramMainButton;
 }
 
-// Extending the global Window interface to include Telegram
 declare global {
   interface Window {
     Telegram?: {
@@ -40,7 +39,7 @@ const tele = window.Telegram?.WebApp;
 
 interface Food {
   title: string;
-  image: string; // Changed to lowercase 'i' to follow standard naming conventions
+  image: string;
   price: number;
   id: number;
 }
@@ -86,7 +85,7 @@ function App() {
 
   const onCheckout = () => {
     if (tele) {
-      tele.MainButton.setText("Pay :)"); // Use setText() method to change button text
+      tele.MainButton.setText("Pay :)");
       tele.MainButton.show();
     }
   };

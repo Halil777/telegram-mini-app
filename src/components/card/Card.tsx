@@ -17,7 +17,7 @@ interface CardProps {
 
 function Card({ food, onAdd, onRemove }: CardProps) {
   const [count, setCount] = useState(0);
-  const { title, image, price } = food; // Update to 'image'
+  const { title, image, price } = food;
 
   const handleIncrement = () => {
     setCount(count + 1);
@@ -37,10 +37,10 @@ function Card({ food, onAdd, onRemove }: CardProps) {
         {count}
       </span>
       <div className="image__container">
-        <img src={image} alt={title} /> {/* Update to 'image' */}
+        <img src={image} alt={title} />
       </div>
       <h4 className="card__title">
-        {title} . <span className="card__price">$ {price}</span>
+        {title} . <span className="card__price">{price} TMT</span>
       </h4>
 
       <div className="btn-container">
