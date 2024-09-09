@@ -1,4 +1,4 @@
-import "./Button.css";
+import "./button.css";
 
 interface ButtonProps {
   type: "add" | "remove" | "checkout";
