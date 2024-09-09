@@ -44,6 +44,7 @@ interface Food {
   image: string;
   price: number;
   id: number;
+  description?: string[];
 }
 
 interface CartItem extends Food {

@@ -20,9 +20,13 @@
     "pizza": ["Syr", "Pomidor sousy", "Pepperoni", "Oregano"],
     "burger": ["Govy patty", "Lettuce", "Tomato", "Sür"],
     "coca": ["Coca-Cola içgisi"],
-    "kebab": ["Gazan et", "Sogan", "Tomatlar", "Pita çörek"],
-    "salad": ["Lettuce", "Tomato", "Sogan", "Zeytinyağı"],
-    "bottle_of_water": ["500ml mineral su"],
-    "ice_cream": ["Vanilla buzgaýmak", "Şokolad çalçy"]
+    "kebab": ["Gazan et", "Sogan", "Tomatlar", "Petir çörek"],
+    "salad": ["Lettuce", "Tomato", "Sogan", "Zeytun yagy"],
+    "bottle_of_water": ["500ml mineral suw"],
+    "ice_cream": ["Wanilla buzgaýmak", "Şokolad çalçy"]
+  },
+
+  "lang": {
+    "languageChanged": "Dil Türkmen diline geçirildi"
   }
 }

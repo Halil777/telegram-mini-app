@@ -38,16 +38,16 @@ function Card({ food, onAdd, onRemove }: CardProps) {
   };
 
   return (
-    <div className="card" onClick={toggleIngredients}>
+    <div className="card">
       <span
         className={`${count !== 0 ? "card__badge" : "card__badge--hidden"}`}
       >
         {count}
       </span>
-      <div className="image__container">
+      <div className="image__container" onClick={toggleIngredients}>
         <img src={image} alt={title} />
       </div>
-      <h4 className="card__title">
+      <h4 className="card__title" onClick={toggleIngredients}>
         {t(title)} . <span className="card__price">{price} TMT</span>
       </h4>
 
@@ -60,9 +60,12 @@ function Card({ food, onAdd, onRemove }: CardProps) {
 
       {showIngredients && (
         <ul className="card__description">
-          {description.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
+          {/* Type casting the returned value as an array */}
+          {(t(description, { returnObjects: true }) as string[]).map(
+            (ingredient: string, index: number) => (
+              <li key={index}>{ingredient}</li>
+            )
+          )}
         </ul>
       )}
     </div>

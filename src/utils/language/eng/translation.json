@@ -24,5 +24,9 @@
     "salad": ["Lettuce", "Tomato", "Cucumber", "Olive Oil"],
     "bottle_of_water": ["500ml mineral water"],
     "ice_cream": ["Vanilla ice cream", "Chocolate sprinkles"]
+  },
+
+  "lang": {
+    "languageChanged": "Language changed to English"
   }
 }
