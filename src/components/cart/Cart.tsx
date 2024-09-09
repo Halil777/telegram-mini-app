@@ -19,7 +19,7 @@ function Cart({ cartItems, onCheckout }: CartProps) {
   return (
     <div className="cart__container">
       {cartItems.length === 0 ? "No items in cart" : ""}
-      <br /> <span>Total Price: ${totalPrice.toFixed(2)}</span>
+      <br /> <span>Total Price: {totalPrice.toFixed(2)} TMT</span>
       <Button
         title={`${cartItems.length === 0 ? "Order !" : "Checkout"} `}
         type={"checkout"}
