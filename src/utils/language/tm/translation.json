@@ -1,0 +1,28 @@
+{
+  "categories": {
+    "fast_food": "Çalt naharlar",
+    "drinks": "Suwlar",
+    "salads": "Işdä açar",
+    "desserts": "Süýjilikler"
+  },
+
+  "title": {
+    "pizza": "Pitsa",
+    "burger": "Burger",
+    "kebab": "Kebap",
+    "coca": "Kola",
+    "salad": "Salat",
+    "bottle_of_water": "Suw",
+    "ice_cream": "Buzgaýmak"
+  },
+
+  "description": {
+    "pizza": ["Syr", "Pomidor sousy", "Pepperoni", "Oregano"],
+    "burger": ["Govy patty", "Lettuce", "Tomato", "Sür"],
+    "coca": ["Coca-Cola içgisi"],
+    "kebab": ["Gazan et", "Sogan", "Tomatlar", "Pita çörek"],
+    "salad": ["Lettuce", "Tomato", "Sogan", "Zeytinyağı"],
+    "bottle_of_water": ["500ml mineral su"],
+    "ice_cream": ["Vanilla buzgaýmak", "Şokolad çalçy"]
+  }
+}

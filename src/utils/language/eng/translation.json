@@ -1,0 +1,28 @@
+{
+  "categories": {
+    "fast_food": "Fast Food",
+    "drinks": "Drinks",
+    "salads": "Salads",
+    "desserts": "Desserts"
+  },
+
+  "title": {
+    "pizza": "Pizza",
+    "burger": "Burger",
+    "kebab": "Kebab",
+    "coca": "Coca",
+    "salad": "Salad",
+    "bottle_of_water": "Bottle of water",
+    "ice_cream": "Ice cream"
+  },
+
+  "description": {
+    "pizza": ["Cheese", "Tomato Sauce", "Pepperoni", "Oregano"],
+    "burger": ["Beef patty", "Lettuce", "Tomato", "Cheese"],
+    "coca": ["Coca-Cola soft drink"],
+    "kebab": ["Grilled meat", "Onions", "Tomatoes", "Pita bread"],
+    "salad": ["Lettuce", "Tomato", "Cucumber", "Olive Oil"],
+    "bottle_of_water": ["500ml mineral water"],
+    "ice_cream": ["Vanilla ice cream", "Chocolate sprinkles"]
+  }
+}

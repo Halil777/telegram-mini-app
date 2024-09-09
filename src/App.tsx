@@ -3,6 +3,8 @@ import "./App.css";
 import Card from "./components/card/Card";
 import Cart from "./components/cart/Cart";
 import { getData } from "./db/db";
+import Language from "./utils/language/Language";
+import { TitleContainer } from "./styles/style";
 
 const foods = getData();
 
@@ -92,12 +94,15 @@ function App() {
 
   return (
     <>
-      <h1 className="heading">Order Food</h1>
+      <TitleContainer>
+        <h1 className="heading">Order Food</h1>
+        <Language />
+      </TitleContainer>
       <Cart cartItems={cartItems} onCheckout={onCheckout} />
       <div className="cards__container">
         {foods.map((food) => (
           <Card
-            food={{ ...food, image: food.Image }}
+            food={{ ...food, image: food.image }}
             key={food.id}
             onAdd={onAdd}
             onRemove={onRemove}
